@@ -4,6 +4,8 @@ import { ScreenOrientation } from '@capacitor/screen-orientation';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import Welcome from './pages/Welcome';
+import SessionInfo from './pages/SessionInfo';
 import VideoTherapy from './pages/VideoTherapy';
 import MediaLibrary from './pages/MediaLibrary';
 import MindfulExercises from './pages/MindfulExercises';
@@ -17,12 +19,13 @@ import ProfilePage from './pages/ProfilePage';
 function BottomNav() {
   const location = useLocation();
   const navItems = [
-    { to: '/', icon: <FaHome />, label: 'Home' },
+    { to: '/dashboard', icon: <FaHome />, label: 'Home' },
     { to: '/therapy', icon: <FaVideo />, label: 'Therapy' },
     { to: '/library', icon: <FaBook />, label: 'Library' },
     { to: '/exercises', icon: <FaDumbbell />, label: 'Exercises' },
     { to: '/profile', icon: <FaUser />, label: 'Profile' },
   ];
+  if (location.pathname === '/') return null;
   return (
     <nav className="bottom-nav">
       {navItems.map((item) => (
@@ -64,7 +67,8 @@ export default function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Welcome />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/therapy" element={<VideoTherapy />} />
         <Route path="/library" element={<MediaLibrary />} />
         <Route path="/exercises" element={<MindfulExercises />} />
@@ -73,6 +77,7 @@ export default function App() {
         <Route path="/video/:id" element={<VideoDetailPage />} />
         <Route path="/therapist/:id" element={<TherapistDetailPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/session" element={<SessionInfo />} />
       </Routes>
       <BottomNav />
     </Router>
