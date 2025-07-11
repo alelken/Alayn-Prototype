@@ -1,7 +1,7 @@
 import './App.css';
 import { ScreenOrientation } from '@capacitor/screen-orientation';
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Welcome from './pages/Welcome';
 import SessionInfo from './pages/SessionInfo';
@@ -10,38 +10,11 @@ import MediaLibrary from './pages/MediaLibrary';
 import MindfulExercises from './pages/MindfulExercises';
 import PersonalityAnalysis from './pages/PersonalityAnalysis';
 import Workshops from './pages/Workshops';
-import { FaHome, FaVideo, FaBook, FaDumbbell, FaStar } from 'react-icons/fa';
 import VideoDetailPage from './pages/VideoDetailPage';
 import TherapistDetailPage from './pages/TherapistDetailPage';
 import ProfilePage from './pages/ProfilePage';
+import BottomNav from './components/BottomNav';
 
-function BottomNav() {
-  const location = useLocation();
-  const navItems = [
-    { to: '/dashboard', icon: <FaHome />, label: 'Home' },
-    { to: '/therapy', icon: <FaVideo />, label: 'Therapy' },
-    { to: '/library', icon: <FaBook />, label: 'Library' },
-    { to: '/exercises', icon: <FaDumbbell />, label: 'Exercises' },
-    { to: '/personality-analysis', icon: <FaStar />, label: 'Analysis' },
-  ];
-  if (location.pathname === '/') return null;
-  return (
-    <nav className="bottom-nav">
-      {navItems.map((item) => (
-        <Link
-          key={item.to}
-          to={item.to}
-          className={
-            'bottom-nav-item' + (location.pathname === item.to ? ' active' : '')
-          }
-        >
-          {item.icon}
-          <span className="bottom-nav-label">{item.label}</span>
-        </Link>
-      ))}
-    </nav>
-  );
-}
 
 export default function App() {
   useEffect(() => {

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserMd, FaChalkboardTeacher, FaSearch, FaBookOpen, FaDumbbell, FaUserCircle, FaHome, FaStar } from 'react-icons/fa';
+import { FaUserMd, FaChalkboardTeacher } from 'react-icons/fa';
 import Card from '../components/Card';
 import SectionTitle from '../components/SectionTitle';
-import Navbar from '../components/Navbar';
+import BottomNav from '../components/BottomNav';
+import SearchInput from '../components/SearchInput';
 import { colors } from '../theme';
 
 const therapists = [
@@ -17,12 +18,6 @@ const workshops = [
   { title: 'Career Growth Strategies', date: '20 Aug 2025', price: 650 },
 ];
 
-const navItems = [
-  { icon: <FaHome />, label: 'Home', onClick: () => window.location.pathname = '/' },
-  { icon: <FaDumbbell />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
-  { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
-  { icon: <FaStar />, label: 'Analysis', onClick: () => window.location.pathname = '/personality-analysis' },
-];
 
 function TherapistCard({ id, name, specialty, fee }: { id: string; name: string; specialty: string; fee: number }) {
   return (
@@ -66,25 +61,12 @@ export default function VideoTherapy() {
       <div className="container">
         <SectionTitle>Therapist Videos & Workshops</SectionTitle>
         <Card style={{ marginBottom: 24 }}>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
-            <FaSearch style={{ color: colors.green, marginRight: 8 }} />
-            <input
-              type="text"
-              placeholder="Search by name or specialty..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              style={{
-                flex: 1,
-                fontSize: 16,
-                padding: 8,
-                borderRadius: 8,
-                border: `1px solid ${colors.lavender}`,
-                outline: 'none',
-                background: colors.background,
-                color: colors.text
-              }}
-            />
-          </div>
+          <SearchInput
+            type="text"
+            placeholder="Search by name or specialty..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
         </Card>
         <SectionTitle>Therapists</SectionTitle>
         {filteredTherapists.length === 0 && <Card><div style={{ color: colors.gray, padding: 16 }}>No therapists found.</div></Card>}
@@ -97,7 +79,7 @@ export default function VideoTherapy() {
         ))}
         <div style={{ height: 72 }} />
       </div>
-      <Navbar items={navItems} />
+      <BottomNav />
     </div>
   );
 }

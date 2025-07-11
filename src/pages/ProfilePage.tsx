@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaUserCircle, FaMoon, FaSun, FaStar, FaCalendarAlt, FaEdit, FaCheckCircle, FaBookOpen, FaDumbbell, FaHome } from 'react-icons/fa';
 import Card from '../components/Card';
 import SectionTitle from '../components/SectionTitle';
-import Navbar from '../components/Navbar';
+import BottomNav from '../components/BottomNav';
 import BackButton from '../components/BackButton';
 import { colors } from '../theme';
 
@@ -149,12 +149,7 @@ export default function ProfilePage() {
         </Card>
         <div style={{ height: 72 }} />
       </div>
-      <Navbar items={[
-        { icon: <FaHome />, label: 'Home', onClick: () => window.location.pathname = '/' },
-        { icon: <FaDumbbell />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
-        { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
-        { icon: <FaStar style={{ fontSize: 24, verticalAlign: 'middle' }} />, label: 'Analysis', active: true, onClick: () => window.location.pathname = '/personality-analysis' },
-      ]} />
+      <BottomNav />
     </div>
   );
-} 
+}

@@ -1,8 +1,8 @@
 import React from 'react';
-import { FaChalkboardTeacher, FaBookOpen, FaDumbbell, FaUserCircle, FaHome, FaStar } from 'react-icons/fa';
+import { FaChalkboardTeacher } from 'react-icons/fa';
 import Card from '../components/Card';
 import SectionTitle from '../components/SectionTitle';
-import Navbar from '../components/Navbar';
+import BottomNav from '../components/BottomNav';
 import { colors } from '../theme';
 
 const workshops = [
@@ -10,12 +10,6 @@ const workshops = [
   { title: 'Career Growth Strategies', date: '20 Aug 2025', price: 650 },
 ];
 
-const navItems = [
-  { icon: <FaHome />, label: 'Home', onClick: () => window.location.pathname = '/' },
-  { icon: <FaDumbbell />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
-  { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
-  { icon: <FaStar />, label: 'Analysis', onClick: () => window.location.pathname = '/personality-analysis' },
-];
 
 function WorkshopCard({ title, date, price }: { title: string; date: string; price: number }) {
   return (
@@ -41,7 +35,7 @@ export default function Workshops() {
         ))}
         <div style={{ height: 72 }} />
       </div>
-      <Navbar items={navItems} />
+      <BottomNav />
     </div>
   );
 }
