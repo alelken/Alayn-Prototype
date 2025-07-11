@@ -61,7 +61,7 @@ export default function TherapistDetailPage() {
   const [confirmed, setConfirmed] = useState(false);
 
   if (!therapist) {
-    return <div className="container"><h1>Therapist Not Found</h1></div>;
+    return <div className="container fade-in"><h1>Therapist Not Found</h1></div>;
   }
 
   const handleConfirm = (e: React.FormEvent) => {
@@ -78,7 +78,7 @@ export default function TherapistDetailPage() {
   };
 
   return (
-    <div className="container">
+    <div className="container fade-in">
       <div className="card" style={{ alignItems: 'center', flexDirection: 'row', gap: 16, marginBottom: 20 }}>
         <div className="avatar-placeholder" style={{ fontSize: 32 }}><FaUserMd /></div>
         <div style={{ flex: 1 }}>
@@ -106,18 +106,18 @@ export default function TherapistDetailPage() {
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
           background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}>
-          <div style={{ background: '#fff', borderRadius: 16, padding: 16, maxWidth: 340, width: '90%', boxShadow: '0 4px 24px #008c7e22', position: 'relative' }}>
-            <button onClick={() => setModalOpen(false)} style={{ position: 'absolute', top: 8, right: 12, background: 'none', border: 'none', fontSize: 22, color: '#008C7E', cursor: 'pointer' }}>&times;</button>
+          <div style={{ background: '#fff', borderRadius: 16, padding: 16, maxWidth: 340, width: '90%', boxShadow: '0 4px 24px rgba(58,90,64,0.2)', position: 'relative' }}>
+            <button onClick={() => setModalOpen(false)} style={{ position: 'absolute', top: 8, right: 12, background: 'none', border: 'none', fontSize: 22, color: 'var(--color-peacock)', cursor: 'pointer' }}>&times;</button>
             {!confirmed ? (
               <form onSubmit={handleConfirm} style={{ textAlign: 'center' }}>
                 <h2 style={{ fontSize: '1.1rem', marginBottom: 8 }}>Book {therapist.name}</h2>
                 <div style={{ margin: '1em 0' }}>
                   <label style={{ fontWeight: 500, color: 'var(--color-peacock)' }}>Date:</label><br />
-                  <input type="date" value={date} onChange={e => setDate(e.target.value)} required style={{ fontSize: 16, padding: 6, borderRadius: 8, border: '1px solid #b9a5ff', marginTop: 4 }} />
+                  <input type="date" value={date} onChange={e => setDate(e.target.value)} required style={{ fontSize: 16, padding: 6, borderRadius: 8, border: '1px solid var(--color-lilac)', marginTop: 4 }} />
                 </div>
                 <div style={{ margin: '1em 0' }}>
                   <label style={{ fontWeight: 500, color: 'var(--color-peacock)' }}>Time Slot:</label><br />
-                  <select value={slot} onChange={e => setSlot(e.target.value)} required style={{ fontSize: 16, padding: 6, borderRadius: 8, border: '1px solid #b9a5ff', marginTop: 4 }}>
+                  <select value={slot} onChange={e => setSlot(e.target.value)} required style={{ fontSize: 16, padding: 6, borderRadius: 8, border: '1px solid var(--color-lilac)', marginTop: 4 }}>
                     <option value="">Select</option>
                     {timeSlots.map(ts => <option key={ts} value={ts}>{ts}</option>)}
                   </select>

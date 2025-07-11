@@ -3,7 +3,7 @@ import { FaHandsHelping } from 'react-icons/fa';
 
 export default function Welcome() {
   return (
-    <div className="welcome-screen">
+    <div className="welcome-screen fade-in">
       <div className="welcome-content">
         <FaHandsHelping className="welcome-illustration" />
         <h1>Therapy &amp; Care</h1>

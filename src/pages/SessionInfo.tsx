@@ -4,7 +4,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 export default function SessionInfo() {
   const tags = ['Bad mood', 'Insomnia', 'Apathy'];
   return (
-    <div className="container">
+    <div className="container fade-in">
       <header className="session-header">
         <Link to="/dashboard" className="back-btn"><FaArrowLeft /></Link>
         <h1>Session Info</h1>

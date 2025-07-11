@@ -19,7 +19,7 @@ const sessions: Session[] = [
 export default function Dashboard() {
   const today = new Date().toLocaleDateString();
   return (
-    <div className="container">
+    <div className="container fade-in">
       <div className="dash-top" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
         <div className="avatar-placeholder" />
         <span style={{ color: 'var(--color-peacock)' }}>{today}</span>
