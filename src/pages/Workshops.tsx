@@ -1,3 +1,6 @@
+import React from 'react';
+import { FaChalkboardTeacher } from 'react-icons/fa';
+
 const workshops = [
   {
     title: 'Mindful Parenting Basics',
@@ -11,21 +14,27 @@ const workshops = [
   },
 ];
 
+function WorkshopCard({ title, date, price }: { title: string; date: string; price: number }) {
+  return (
+    <div className="item-card">
+      <div className="avatar-placeholder"><FaChalkboardTeacher /></div>
+      <div className="item-info">
+        <h2>{title} <span className="badge badge-premium">Paid</span></h2>
+        <p>{date}</p>
+        <p>₹{price}</p>
+        <button className="btn">Buy Ticket</button>
+      </div>
+    </div>
+  );
+}
+
 export default function Workshops() {
   return (
     <div className="container">
       <h1>Therapist Videos & Workshops</h1>
-      <div className="list">
+      <div className="grid-list">
         {workshops.map((w) => (
-          <div key={w.title} className="item-card">
-            <div className="avatar-placeholder" />
-            <div className="item-info">
-              <h2>{w.title}</h2>
-              <p>{w.date}</p>
-              <p>₹{w.price}</p>
-              <button className="btn">Buy Ticket</button>
-            </div>
-          </div>
+          <WorkshopCard key={w.title} {...w} />
         ))}
       </div>
     </div>
