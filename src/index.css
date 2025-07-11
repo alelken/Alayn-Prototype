@@ -1,7 +1,33 @@
+:root {
+  --color-teal: #006A50;
+  --color-peacock: #008C7E;
+  --color-lilac: #B9A5FF;
+  --color-sand: #F5E9DA;
+  --color-charcoal: #1F1F1F;
+  --color-disabled: #8DC4BB;
+}
+
 body {
   margin: 0;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background: var(--color-sand);
+  color: var(--color-charcoal);
+}
+
+.top-bar {
+  height: 56px;
+  background: var(--color-teal);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.logo {
   font-family: 'Poppins', sans-serif;
-  background: #F5E9DA;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
 }
 
 .container {
@@ -16,13 +42,81 @@ body {
 .card {
   background: white;
   padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   flex: 1;
   text-align: center;
+  text-decoration: none;
+  color: inherit;
 }
 
 .card h2 {
   margin-top: 0.5rem;
   font-size: 1.2rem;
+}
+
+.card svg {
+  color: var(--color-teal);
+  width: 2rem;
+  height: 2rem;
+}
+
+.list {
+  display: grid;
+  gap: 1rem;
+}
+
+.item-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.item-card img {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.avatar-placeholder {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  background: #ddd;
+  margin-right: 1rem;
+}
+
+.item-info {
+  flex: 1;
+}
+
+form.list {
+  display: grid;
+  gap: 1rem;
+}
+
+label {
+  margin-right: 1rem;
+}
+
+.btn {
+  background: var(--color-teal);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn:disabled {
+  background: var(--color-disabled);
+  cursor: not-allowed;
 }
