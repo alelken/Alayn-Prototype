@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaBookOpen, FaDumbbell, FaUserCircle, FaHome, FaPlayCircle, FaStar } from 'react-icons/fa';
+import { FaUserCircle, FaPlayCircle } from 'react-icons/fa';
 import Card from '../components/Card';
 import SectionTitle from '../components/SectionTitle';
-import Navbar from '../components/Navbar';
+import BottomNav from '../components/BottomNav';
 import BackButton from '../components/BackButton';
 import { colors } from '../theme';
 
@@ -13,12 +13,6 @@ const media = [
   { id: 'teresa', title: 'Mother Teresa: Compassion in Action', free: false, description: 'The life and work of Mother Teresa.', thumbnail: '' },
 ];
 
-const navItems = [
-  { icon: <FaHome />, label: 'Home', onClick: () => window.location.pathname = '/' },
-  { icon: <FaDumbbell />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
-  { icon: <FaBookOpen />, label: 'Library', active: true, onClick: () => window.location.pathname = '/media-library' },
-  { icon: <FaStar />, label: 'Analysis', onClick: () => window.location.pathname = '/personality-analysis' },
-];
 
 export default function VideoDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -58,7 +52,7 @@ export default function VideoDetailPage() {
         ))}
         <div style={{ height: 72 }} />
       </div>
-      <Navbar items={navItems} />
+      <BottomNav />
     </div>
   );
-} 
+}

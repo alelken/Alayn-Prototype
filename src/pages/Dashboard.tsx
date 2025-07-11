@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaBell, FaUserCircle, FaCalendarAlt, FaBookOpen, FaPlayCircle, FaUserMd } from 'react-icons/fa';
 import Card from '../components/Card';
 import SectionTitle from '../components/SectionTitle';
-import Navbar from '../components/Navbar';
+import BottomNav from '../components/BottomNav';
 import BackButton from '../components/BackButton';
 import { colors } from '../theme';
 
@@ -17,17 +17,10 @@ const nextSession = {
   id: 1,
 };
 const quickActions = [
-  { icon: <FaUserMd />, text: 'Therapy', to: '/video-therapy' },
+  { icon: <FaUserMd />, text: 'Therapy', to: '/therapy' },
   { icon: <FaPlayCircle />, text: 'Start Exercise', to: '/mindful-exercises' },
   { icon: <FaBookOpen />, text: 'Library', to: '/media-library' },
-  { icon: <FaCalendarAlt />, text: 'Book', to: '/video-therapy' },
-];
-const navItems = [
-  { icon: <FaCalendarAlt />, label: 'Home', active: true, onClick: () => window.location.pathname = '/' },
-  { icon: <FaUserMd />, label: 'Therapy', onClick: () => window.location.pathname = '/video-therapy' },
-  { icon: <FaPlayCircle />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
-  { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
-  { icon: <FaUserCircle />, label: 'Profile', onClick: () => window.location.pathname = '/profile' },
+  { icon: <FaCalendarAlt />, text: 'Book', to: '/therapy' },
 ];
 
 export default function Dashboard() {
@@ -42,7 +35,9 @@ export default function Dashboard() {
           <div className="greeting">
             <div className="greet-text">Good morning, <b>{clientName}</b>!</div>
           </div>
-          <div className="notif-bell"><FaBell size={22} /></div>
+          <button className="notif-bell" aria-label="Notifications" type="button">
+            <FaBell size={22} />
+          </button>
         </div>
         <SectionTitle>What's your mood?</SectionTitle>
         <Card>
@@ -60,19 +55,13 @@ export default function Dashboard() {
               <div className="therapist-name">{nextSession.therapist}</div>
               <div className="session-datetime">{nextSession.date}, {nextSession.time}</div>
             </div>
-            <Link to="/video-therapy" className="btn">Book</Link>
+            <Link to="/therapy" className="btn">Book</Link>
           </div>
         </Card>
         {/* Quick Actions removed as per request */}
         <div style={{ height: 72 }} />
       </div>
-      <Navbar items={[
-        { icon: <FaCalendarAlt />, label: 'Home', active: true, onClick: () => window.location.pathname = '/' },
-        { icon: <FaUserMd />, label: 'Therapy', onClick: () => window.location.pathname = '/video-therapy' },
-        { icon: <FaPlayCircle />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
-        { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
-        { icon: <FaUserCircle />, label: 'Analysis', onClick: () => window.location.pathname = '/personality-analysis' },
-      ]} />
+      <BottomNav />
     </div>
   );
 }

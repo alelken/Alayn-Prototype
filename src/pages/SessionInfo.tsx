@@ -1,17 +1,11 @@
 import { Link } from 'react-router-dom';
-import { FaArrowLeft, FaBookOpen, FaDumbbell, FaUserCircle, FaHome, FaStar } from 'react-icons/fa';
+import { FaArrowLeft } from 'react-icons/fa';
 import Card from '../components/Card';
 import SectionTitle from '../components/SectionTitle';
-import Navbar from '../components/Navbar';
+import BottomNav from '../components/BottomNav';
 import BackButton from '../components/BackButton';
 import { colors } from '../theme';
 
-const navItems = [
-  { icon: <FaHome />, label: 'Home', onClick: () => window.location.pathname = '/' },
-  { icon: <FaDumbbell />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
-  { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
-  { icon: <FaStar />, label: 'Analysis', onClick: () => window.location.pathname = '/personality-analysis' },
-];
 
 export default function SessionInfo() {
   const tags = ['Bad mood', 'Insomnia', 'Apathy'];
@@ -42,7 +36,7 @@ export default function SessionInfo() {
         </Card>
         <div style={{ height: 72 }} />
       </div>
-      <Navbar items={navItems} />
+      <BottomNav />
     </div>
   );
 }
