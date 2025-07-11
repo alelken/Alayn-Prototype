@@ -1,4 +1,3 @@
-import Header from './Header';
 import './App.css';
 import { ScreenOrientation } from '@capacitor/screen-orientation';
 import { useEffect } from 'react';
@@ -11,7 +10,7 @@ import MediaLibrary from './pages/MediaLibrary';
 import MindfulExercises from './pages/MindfulExercises';
 import PersonalityAnalysis from './pages/PersonalityAnalysis';
 import Workshops from './pages/Workshops';
-import { FaHome, FaVideo, FaBook, FaDumbbell, FaUser } from 'react-icons/fa';
+import { FaHome, FaVideo, FaBook, FaDumbbell, FaStar } from 'react-icons/fa';
 import VideoDetailPage from './pages/VideoDetailPage';
 import TherapistDetailPage from './pages/TherapistDetailPage';
 import ProfilePage from './pages/ProfilePage';
@@ -23,7 +22,7 @@ function BottomNav() {
     { to: '/therapy', icon: <FaVideo />, label: 'Therapy' },
     { to: '/library', icon: <FaBook />, label: 'Library' },
     { to: '/exercises', icon: <FaDumbbell />, label: 'Exercises' },
-    { to: '/profile', icon: <FaUser />, label: 'Profile' },
+    { to: '/personality-analysis', icon: <FaStar />, label: 'Analysis' },
   ];
   if (location.pathname === '/') return null;
   return (
@@ -65,7 +64,6 @@ export default function App() {
 
   return (
     <Router>
-      <Header />
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/dashboard" element={<Dashboard />} />

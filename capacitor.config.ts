@@ -1,15 +1,9 @@
-import { CapacitorConfig } from '@capacitor/cli';
+import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.alayn.app',
-  appName: 'Alayn',
-  webDir: 'dist',
-  bundledWebRuntime: false,
-  plugins: {
-    Camera: {
-      photoQuality: 90
-    }
-  }
+  appId: 'in.alelken.protoalayn',
+  appName: 'android',
+  webDir: 'dist'
 };
 
 export default config;

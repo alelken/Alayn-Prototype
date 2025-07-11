@@ -1,34 +1,48 @@
 import { Link } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft, FaBookOpen, FaDumbbell, FaUserCircle, FaHome, FaStar } from 'react-icons/fa';
+import Card from '../components/Card';
+import SectionTitle from '../components/SectionTitle';
+import Navbar from '../components/Navbar';
+import BackButton from '../components/BackButton';
+import { colors } from '../theme';
+
+const navItems = [
+  { icon: <FaHome />, label: 'Home', onClick: () => window.location.pathname = '/' },
+  { icon: <FaDumbbell />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
+  { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
+  { icon: <FaStar />, label: 'Analysis', onClick: () => window.location.pathname = '/personality-analysis' },
+];
 
 export default function SessionInfo() {
   const tags = ['Bad mood', 'Insomnia', 'Apathy'];
   return (
-    <div className="container fade-in">
-      <header className="session-header">
-        <Link to="/dashboard" className="back-btn"><FaArrowLeft /></Link>
-        <h1>Session Info</h1>
-      </header>
-      <div className="card" style={{ padding: '1.5rem' }}>
-        <div className="profile" style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-          <div className="avatar-placeholder" />
-          <div style={{ marginLeft: '1rem' }}>
-            <h2 style={{ marginBottom: '0.2rem' }}>Patient Name</h2>
-            <p>Age 30 · Anxiety</p>
+    <div className="dashboard-bg">
+      <div className="container">
+        <div style={{ margin: '24px 0 16px 0' }}><BackButton /></div>
+        <SectionTitle>Session Info</SectionTitle>
+        <Card>
+          <div className="profile" style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+            <div className="avatar-placeholder" />
+            <div style={{ marginLeft: '1rem' }}>
+              <h2 style={{ marginBottom: '0.2rem' }}>Patient Name</h2>
+              <p>Age 30 · Anxiety</p>
+            </div>
           </div>
-        </div>
-        <div className="chips-row" style={{ marginBottom: '1rem' }}>
-          {tags.map(t => <span key={t} className="chip">{t}</span>)}
-        </div>
-        <div className="tabs" style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
-          <button className="tab active">Information</button>
-          <button className="tab">Medicine</button>
-          <button className="tab">Diagnoses</button>
-        </div>
-        <div className="info-section">
-          <p>General information about the session goes here.</p>
-        </div>
+          <div style={{ marginBottom: '1rem', display: 'flex', gap: 8 }}>
+            {tags.map(t => <span key={t} style={{ background: colors.lavender, color: colors.text, borderRadius: 16, padding: '4px 12px', fontSize: 14 }}>{t}</span>)}
+          </div>
+          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+            <button style={{ background: colors.green, color: colors.text, border: 'none', borderRadius: 16, padding: '6px 16px', fontWeight: 600 }}>Information</button>
+            <button style={{ background: colors.lavender, color: colors.text, border: 'none', borderRadius: 16, padding: '6px 16px' }}>Medicine</button>
+            <button style={{ background: colors.lavender, color: colors.text, border: 'none', borderRadius: 16, padding: '6px 16px' }}>Diagnoses</button>
+          </div>
+          <div className="info-section">
+            <p>General information about the session goes here.</p>
+          </div>
+        </Card>
+        <div style={{ height: 72 }} />
       </div>
+      <Navbar items={navItems} />
     </div>
   );
 }

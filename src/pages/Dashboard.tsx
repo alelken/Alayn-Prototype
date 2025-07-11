@@ -1,55 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaBell, FaUserCircle, FaCalendarAlt, FaBookOpen, FaPlayCircle, FaUserMd } from 'react-icons/fa';
+import Card from '../components/Card';
+import SectionTitle from '../components/SectionTitle';
+import Navbar from '../components/Navbar';
+import BackButton from '../components/BackButton';
+import { colors } from '../theme';
 
-interface Session {
-  id: number;
-  name: string;
-  age: number;
-  diagnosis: string;
-  date: string;
-  time: string;
-}
-
-const sessions: Session[] = [
-  { id: 1, name: 'Jane Doe', age: 28, diagnosis: 'Anxiety', date: 'Today', time: '09:00 AM' },
-  { id: 2, name: 'John Smith', age: 34, diagnosis: 'Depression', date: 'Today', time: '11:00 AM' },
-  { id: 3, name: 'Priya Patel', age: 25, diagnosis: 'Burnout', date: 'Today', time: '02:00 PM' },
+const clientName = 'Alex';
+const avatarUrl = '';
+const nextSession = {
+  therapist: 'Dr. Smith',
+  photo: '',
+  date: 'Today',
+  time: '3:00 PM',
+  id: 1,
+};
+const quickActions = [
+  { icon: <FaUserMd />, text: 'Therapy', to: '/video-therapy' },
+  { icon: <FaPlayCircle />, text: 'Start Exercise', to: '/mindful-exercises' },
+  { icon: <FaBookOpen />, text: 'Library', to: '/media-library' },
+  { icon: <FaCalendarAlt />, text: 'Book', to: '/video-therapy' },
+];
+const navItems = [
+  { icon: <FaCalendarAlt />, label: 'Home', active: true, onClick: () => window.location.pathname = '/' },
+  { icon: <FaUserMd />, label: 'Therapy', onClick: () => window.location.pathname = '/video-therapy' },
+  { icon: <FaPlayCircle />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
+  { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
+  { icon: <FaUserCircle />, label: 'Profile', onClick: () => window.location.pathname = '/profile' },
 ];
 
 export default function Dashboard() {
-  const today = new Date().toLocaleDateString();
+  const [mood, setMood] = useState(1);
+  const moods = ['😔', '😐', '😊'];
   return (
-    <div className="container fade-in">
-      <div className="dash-top" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-        <div className="avatar-placeholder" />
-        <span style={{ color: 'var(--color-peacock)' }}>{today}</span>
-      </div>
-      <h1 style={{ marginBottom: 4 }}>Good morning Dr. Kim</h1>
-      <p style={{ marginTop: 0, marginBottom: '1.5rem' }}>You have {sessions.length} sessions today.</p>
-
-      <div className="calendar-strip" style={{ display: 'flex', gap: '0.5rem', overflowX: 'auto', marginBottom: '1.5rem' }}>
-        {[...Array(7)].map((_, i) => {
-          const d = new Date();
-          d.setDate(d.getDate() + i);
-          const label = d.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric' });
-          return (
-            <div key={i} className={i === 0 ? 'calendar-day active' : 'calendar-day'}>{label}</div>
-          );
-        })}
-      </div>
-
-      <div className="list">
-        {sessions.map(s => (
-          <Link to="/session" key={s.id} className="card" style={{ flexDirection: 'row', alignItems: 'center', marginBottom: '1rem' }}>
-            <div className="avatar-placeholder" />
-            <div className="item-info">
-              <h2>{s.name}</h2>
-              <p>{s.age} yrs · {s.diagnosis}</p>
-              <p style={{ fontSize: '0.85rem', color: 'var(--color-peacock)' }}>{s.date} at {s.time}</p>
+    <div className="dashboard-bg">
+      <div className="container">
+        {/* Greeting and notification */}
+        <div className="dash-header" style={{ marginBottom: 24 }}>
+          <Link to="/profile" className="avatar-wrap" style={{ cursor: 'pointer' }}>{avatarUrl ? <img src={avatarUrl} alt="avatar" /> : <FaUserCircle size={36} />}</Link>
+          <div className="greeting">
+            <div className="greet-text">Good morning, <b>{clientName}</b>!</div>
+          </div>
+          <div className="notif-bell"><FaBell size={22} /></div>
+        </div>
+        <SectionTitle>What's your mood?</SectionTitle>
+        <Card>
+          <div className="mood-emojis" style={{ justifyContent: 'center', gap: 24 }}>
+            {moods.map((m, i) => (
+              <button key={i} className={mood === i ? 'mood-btn active' : 'mood-btn'} onClick={() => setMood(i)}>{m}</button>
+            ))}
+          </div>
+        </Card>
+        <SectionTitle>Next Session</SectionTitle>
+        <Card>
+          <div className="session-info" style={{ alignItems: 'center', gap: 16 }}>
+            <div className="therapist-pic">{nextSession.photo ? <img src={nextSession.photo} alt="therapist" /> : <FaUserCircle size={32} />}</div>
+            <div>
+              <div className="therapist-name">{nextSession.therapist}</div>
+              <div className="session-datetime">{nextSession.date}, {nextSession.time}</div>
             </div>
-          </Link>
-        ))}
+            <Link to="/video-therapy" className="btn">Book</Link>
+          </div>
+        </Card>
+        {/* Quick Actions removed as per request */}
+        <div style={{ height: 72 }} />
       </div>
+      <Navbar items={[
+        { icon: <FaCalendarAlt />, label: 'Home', active: true, onClick: () => window.location.pathname = '/' },
+        { icon: <FaUserMd />, label: 'Therapy', onClick: () => window.location.pathname = '/video-therapy' },
+        { icon: <FaPlayCircle />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
+        { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
+        { icon: <FaUserCircle />, label: 'Analysis', onClick: () => window.location.pathname = '/personality-analysis' },
+      ]} />
     </div>
   );
 }

@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FaUserMd, FaStar, FaCalendarAlt } from 'react-icons/fa';
+import { FaUserMd, FaStar, FaCalendarAlt, FaBookOpen, FaDumbbell, FaUserCircle, FaHome } from 'react-icons/fa';
+import Card from '../components/Card';
+import SectionTitle from '../components/SectionTitle';
+import Navbar from '../components/Navbar';
+import BackButton from '../components/BackButton';
+import { colors } from '../theme';
 
 const therapists = [
   {
@@ -52,6 +57,13 @@ function downloadICS({ therapist, date, time }: { therapist: string; date: strin
   URL.revokeObjectURL(url);
 }
 
+const navItems = [
+  { icon: <FaHome />, label: 'Home', onClick: () => window.location.pathname = '/' },
+  { icon: <FaDumbbell />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
+  { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
+  { icon: <FaStar />, label: 'Analysis', onClick: () => window.location.pathname = '/personality-analysis' },
+];
+
 export default function TherapistDetailPage() {
   const { id } = useParams<{ id: string }>();
   const therapist = therapists.find(t => t.id === id);
@@ -61,8 +73,15 @@ export default function TherapistDetailPage() {
   const [confirmed, setConfirmed] = useState(false);
 
   if (!therapist) {
-    return <div className="container fade-in"><h1>Therapist Not Found</h1></div>;
+    return <div className="dashboard-bg"><div className="container"><SectionTitle>Therapist Not Found</SectionTitle></div></div>;
   }
+
+  // Calculate experience (years) from bio if present
+  let experience = '';
+  const expMatch = therapist.bio.match(/(\d+)\+? years?/i);
+  if (expMatch) experience = expMatch[1];
+  // Calculate average rating
+  const avgRating = therapist.reviews.length ? (therapist.reviews.reduce((a, r) => a + r.rating, 0) / therapist.reviews.length).toFixed(1) : null;
 
   const handleConfirm = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,63 +97,74 @@ export default function TherapistDetailPage() {
   };
 
   return (
-    <div className="container fade-in">
-      <div className="card" style={{ alignItems: 'center', flexDirection: 'row', gap: 16, marginBottom: 20 }}>
-        <div className="avatar-placeholder" style={{ fontSize: 32 }}><FaUserMd /></div>
-        <div style={{ flex: 1 }}>
-          <h1 style={{ marginBottom: 4 }}>{therapist.name}</h1>
-          <div style={{ color: 'var(--color-peacock)', fontWeight: 600 }}>{therapist.specialty}</div>
-          <div style={{ color: '#888', margin: '6px 0' }}>{therapist.bio}</div>
-          <div style={{ color: 'var(--color-accent)', fontWeight: 600 }}>₹{therapist.fee} per session</div>
-        </div>
-        <button className="btn" onClick={() => { setModalOpen(true); setConfirmed(false); setDate(''); setSlot(''); }}>Book</button>
-      </div>
-      <div className="card" style={{ marginBottom: 20 }}>
-        <div style={{ fontWeight: 600, color: 'var(--color-peacock)', marginBottom: 8 }}>Reviews</div>
-        {therapist.reviews.length === 0 && <div style={{ color: '#888' }}>No reviews yet.</div>}
-        {therapist.reviews.map((r, i) => (
-          <div key={i} style={{ marginBottom: 10, borderBottom: '1px solid #eee', paddingBottom: 8 }}>
-            <span style={{ color: 'var(--color-accent)', fontWeight: 600 }}>{r.user}</span>
-            <span style={{ marginLeft: 8, color: '#FFD700' }}>{'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}</span>
-            <div style={{ color: '#444', marginTop: 2 }}>{r.text}</div>
+    <div className="dashboard-bg">
+      <div className="container">
+        <div style={{ margin: '24px 0 16px 0' }}><BackButton /></div>
+        <Card style={{ alignItems: 'flex-start', flexDirection: 'column', gap: 20, marginBottom: 20, padding: 28 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 18, width: '100%' }}>
+            <div className="avatar-placeholder" style={{ fontSize: 40, minWidth: 56 }}><FaUserMd style={{ fontSize: 32, verticalAlign: 'middle' }} /></div>
+            <div style={{ flex: 1 }}>
+              <SectionTitle>{therapist.name}</SectionTitle>
+              <div style={{ color: colors.green, fontWeight: 600, fontSize: 16 }}>{therapist.specialty}</div>
+            </div>
           </div>
-        ))}
-      </div>
-      {/* Booking Modal */}
-      {modalOpen && (
-        <div style={{
-          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
-        }}>
-          <div style={{ background: '#fff', borderRadius: 16, padding: 16, maxWidth: 340, width: '90%', boxShadow: '0 4px 24px rgba(58,90,64,0.2)', position: 'relative' }}>
-            <button onClick={() => setModalOpen(false)} style={{ position: 'absolute', top: 8, right: 12, background: 'none', border: 'none', fontSize: 22, color: 'var(--color-peacock)', cursor: 'pointer' }}>&times;</button>
-            {!confirmed ? (
-              <form onSubmit={handleConfirm} style={{ textAlign: 'center' }}>
-                <h2 style={{ fontSize: '1.1rem', marginBottom: 8 }}>Book {therapist.name}</h2>
-                <div style={{ margin: '1em 0' }}>
-                  <label style={{ fontWeight: 500, color: 'var(--color-peacock)' }}>Date:</label><br />
-                  <input type="date" value={date} onChange={e => setDate(e.target.value)} required style={{ fontSize: 16, padding: 6, borderRadius: 8, border: '1px solid var(--color-lilac)', marginTop: 4 }} />
-                </div>
-                <div style={{ margin: '1em 0' }}>
-                  <label style={{ fontWeight: 500, color: 'var(--color-peacock)' }}>Time Slot:</label><br />
-                  <select value={slot} onChange={e => setSlot(e.target.value)} required style={{ fontSize: 16, padding: 6, borderRadius: 8, border: '1px solid var(--color-lilac)', marginTop: 4 }}>
-                    <option value="">Select</option>
-                    {timeSlots.map(ts => <option key={ts} value={ts}>{ts}</option>)}
-                  </select>
-                </div>
-                <button className="btn mt-md" type="submit">Confirm Booking</button>
-              </form>
-            ) : (
-              <div style={{ textAlign: 'center', color: 'var(--color-peacock)' }}>
-                <h2>Booking Confirmed!</h2>
-                <p>Your session with <b>{therapist.name}</b> is booked for <b>{date}</b> at <b>{slot}</b>.</p>
-                <button className="btn mt-md" onClick={() => setModalOpen(false)}>Close</button>
-                <button className="btn mt-md" style={{ marginLeft: 8 }} onClick={() => downloadICS({ therapist: therapist.name, date, time: slot })}>Add to Calendar</button>
-              </div>
-            )}
+          <div style={{ display: 'flex', gap: 24, margin: '10px 0', width: '100%' }}>
+            {experience && <div style={{ color: colors.text, fontWeight: 500, fontSize: 15, display: 'flex', alignItems: 'center', gap: 6 }}><FaCalendarAlt style={{ fontSize: 24, verticalAlign: 'middle', color: colors.accent }} />{experience} yrs exp</div>}
+            {avgRating && <div style={{ color: colors.text, fontWeight: 500, fontSize: 15, display: 'flex', alignItems: 'center', gap: 6 }}><FaStar style={{ fontSize: 24, verticalAlign: 'middle', color: '#FFD700' }} />{avgRating} <span style={{ color: colors.gray, fontSize: 14, marginLeft: 2 }}>/5</span></div>}
           </div>
-        </div>
-      )}
+          <div style={{ color: colors.gray, fontSize: 15, margin: '8px 0 0 0', width: '100%' }}>{therapist.bio}</div>
+          <div style={{ color: colors.accent, fontWeight: 700, fontSize: 18, margin: '10px 0 0 0', width: '100%' }}>₹{therapist.fee} per session</div>
+          <button className="btn" style={{ fontSize: '1.1rem', padding: '0.7rem 1.5rem', marginTop: 12 }} onClick={() => { setModalOpen(true); setConfirmed(false); setDate(''); setSlot(''); }}>Book</button>
+        </Card>
+        <Card style={{ marginBottom: 20 }}>
+          <SectionTitle>Reviews</SectionTitle>
+          {therapist.reviews.length === 0 && <div style={{ color: colors.gray }}>No reviews yet.</div>}
+          {therapist.reviews.map((r, i) => (
+            <div key={i} style={{ marginBottom: 10, borderBottom: '1px solid #eee', paddingBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ color: colors.accent, fontWeight: 600 }}>{r.user}</span>
+              <span style={{ marginLeft: 8, color: '#FFD700', display: 'flex', alignItems: 'center', gap: 2 }}>{Array.from({length: 5}).map((_, idx) => <FaStar key={idx} style={{ fontSize: 18, verticalAlign: 'middle', color: idx < r.rating ? '#FFD700' : '#eee' }} />)}</span>
+              <div style={{ color: '#444', marginTop: 2 }}>{r.text}</div>
+            </div>
+          ))}
+        </Card>
+        {/* Booking Modal unchanged */}
+        {modalOpen && (
+          <div style={{
+            position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+            background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}>
+            <Card style={{ background: colors.card, borderRadius: 16, padding: 16, maxWidth: 340, width: '90%', boxShadow: '0 4px 24px rgba(58,90,64,0.2)', position: 'relative' }}>
+              <button onClick={() => setModalOpen(false)} style={{ position: 'absolute', top: 8, right: 12, background: 'none', border: 'none', fontSize: 22, color: colors.green, cursor: 'pointer' }}>&times;</button>
+              {!confirmed ? (
+                <form onSubmit={handleConfirm} style={{ textAlign: 'center' }}>
+                  <SectionTitle>Book {therapist.name}</SectionTitle>
+                  <div style={{ margin: '1em 0' }}>
+                    <label style={{ fontWeight: 500, color: colors.green }}>Date:</label><br />
+                    <input type="date" value={date} onChange={e => setDate(e.target.value)} required style={{ fontSize: 16, padding: 6, borderRadius: 8, border: `1px solid ${colors.lavender}`, marginTop: 4 }} />
+                  </div>
+                  <div style={{ margin: '1em 0' }}>
+                    <label style={{ fontWeight: 500, color: colors.green }}>Time Slot:</label><br />
+                    <select value={slot} onChange={e => setSlot(e.target.value)} required style={{ fontSize: 16, padding: 6, borderRadius: 8, border: `1px solid ${colors.lavender}`, marginTop: 4 }}>
+                      <option value="">Select</option>
+                      {timeSlots.map(ts => <option key={ts} value={ts}>{ts}</option>)}
+                    </select>
+                  </div>
+                  <button className="btn mt-md" type="submit" style={{ fontSize: '1.1rem', padding: '0.7rem 1.5rem' }}>Confirm Booking</button>
+                </form>
+              ) : (
+                <div style={{ textAlign: 'center', color: colors.green }}>
+                  <SectionTitle>Booking Confirmed!</SectionTitle>
+                  <p>Your session with <b>{therapist.name}</b> is booked for <b>{date}</b> at <b>{slot}</b>.</p>
+                  <button className="btn mt-md" style={{ fontSize: '1.1rem', padding: '0.7rem 1.5rem' }} onClick={() => setModalOpen(false)}>Close</button>
+                  <button className="btn mt-md" style={{ marginLeft: 8, fontSize: '1.1rem', padding: '0.7rem 1.5rem' }} onClick={() => downloadICS({ therapist: therapist.name, date, time: slot })}>Add to Calendar</button>
+                </div>
+              )}
+            </Card>
+          </div>
+        )}
+        <div style={{ height: 72 }} />
+      </div>
+      <Navbar items={navItems} />
     </div>
   );
 } 

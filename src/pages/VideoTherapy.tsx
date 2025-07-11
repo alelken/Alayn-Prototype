@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserMd, FaChalkboardTeacher, FaSearch } from 'react-icons/fa';
+import { FaUserMd, FaChalkboardTeacher, FaSearch, FaBookOpen, FaDumbbell, FaUserCircle, FaHome, FaStar } from 'react-icons/fa';
+import Card from '../components/Card';
+import SectionTitle from '../components/SectionTitle';
+import Navbar from '../components/Navbar';
+import { colors } from '../theme';
 
 const therapists = [
   { id: 'asha', name: 'Dr. Asha Singh', specialty: 'Career Counselling', fee: 1500 },
@@ -9,89 +13,91 @@ const therapists = [
 ];
 
 const workshops = [
-  {
-    title: 'Mindful Parenting Basics',
-    date: '12 Aug 2025',
-    price: 500,
-  },
-  {
-    title: 'Career Growth Strategies',
-    date: '20 Aug 2025',
-    price: 650,
-  },
+  { title: 'Mindful Parenting Basics', date: '12 Aug 2025', price: 500 },
+  { title: 'Career Growth Strategies', date: '20 Aug 2025', price: 650 },
+];
+
+const navItems = [
+  { icon: <FaHome />, label: 'Home', onClick: () => window.location.pathname = '/' },
+  { icon: <FaDumbbell />, label: 'Exercises', onClick: () => window.location.pathname = '/mindful-exercises' },
+  { icon: <FaBookOpen />, label: 'Library', onClick: () => window.location.pathname = '/media-library' },
+  { icon: <FaStar />, label: 'Analysis', onClick: () => window.location.pathname = '/personality-analysis' },
 ];
 
 function TherapistCard({ id, name, specialty, fee }: { id: string; name: string; specialty: string; fee: number }) {
   return (
-    <Link to={`/therapist/${id}`} className="item-card" style={{ textDecoration: 'none' }}>
-      <div className="avatar-placeholder"><FaUserMd /></div>
-      <div className="item-info">
-        <h2>{name}</h2>
-        <p>{specialty}</p>
-        <p>₹{fee}</p>
+    <Link to={`/therapist/${id}`} style={{ textDecoration: 'none' }}>
+      <Card style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+        <div className="avatar-placeholder"><FaUserMd /></div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontWeight: 600 }}>{name}</div>
+          <div style={{ color: colors.gray }}>{specialty}</div>
+          <div style={{ color: colors.green, fontWeight: 600 }}>₹{fee}</div>
+        </div>
         <button className="btn" type="button">View Profile</button>
-      </div>
+      </Card>
     </Link>
   );
 }
 
 function WorkshopCard({ title, date, price }: { title: string; date: string; price: number }) {
   return (
-    <div className="item-card">
+    <Card style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
       <div className="avatar-placeholder"><FaChalkboardTeacher /></div>
-      <div className="item-info">
-        <h2>{title} <span className="badge badge-premium">Paid</span></h2>
-        <p>{date}</p>
-        <p>₹{price}</p>
-        <button className="btn">Buy Ticket</button>
+      <div style={{ flex: 1 }}>
+        <div style={{ fontWeight: 600 }}>{title}</div>
+        <div style={{ color: colors.gray }}>{date}</div>
+        <div style={{ color: colors.green, fontWeight: 600 }}>₹{price}</div>
       </div>
-    </div>
+      <button className="btn">Buy Ticket</button>
+    </Card>
   );
 }
 
 export default function VideoTherapy() {
   const [search, setSearch] = useState('');
-
   const filteredTherapists = therapists.filter(t =>
     t.name.toLowerCase().includes(search.toLowerCase()) ||
     t.specialty.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <div className="container fade-in">
-      <h1>Therapist Videos & Workshops</h1>
-      <h2 style={{fontSize: '1.1rem', color: 'var(--color-peacock)', margin: '1.2rem 0 0.5rem 0'}}>Therapists</h2>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
-        <FaSearch style={{ color: 'var(--color-peacock)', marginRight: 8 }} />
-        <input
-          type="text"
-          placeholder="Search by name or specialty..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          style={{
-            flex: 1,
-            fontSize: 16,
-            padding: 8,
-            borderRadius: 8,
-            border: '1px solid var(--color-lilac)',
-            outline: 'none',
-            background: 'var(--color-sand)',
-            color: 'var(--color-charcoal)'
-          }}
-        />
-      </div>
-      <div className="grid-list">
-        {filteredTherapists.length === 0 && <div style={{ color: '#888', padding: 16 }}>No therapists found.</div>}
+    <div className="dashboard-bg">
+      <div className="container">
+        <SectionTitle>Therapist Videos & Workshops</SectionTitle>
+        <Card style={{ marginBottom: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
+            <FaSearch style={{ color: colors.green, marginRight: 8 }} />
+            <input
+              type="text"
+              placeholder="Search by name or specialty..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              style={{
+                flex: 1,
+                fontSize: 16,
+                padding: 8,
+                borderRadius: 8,
+                border: `1px solid ${colors.lavender}`,
+                outline: 'none',
+                background: colors.background,
+                color: colors.text
+              }}
+            />
+          </div>
+        </Card>
+        <SectionTitle>Therapists</SectionTitle>
+        {filteredTherapists.length === 0 && <Card><div style={{ color: colors.gray, padding: 16 }}>No therapists found.</div></Card>}
         {filteredTherapists.map((t) => (
           <TherapistCard key={t.id} {...t} />
         ))}
-      </div>
-      <h2 style={{fontSize: '1.1rem', color: 'var(--color-peacock)', margin: '1.2rem 0 0.5rem 0'}}>Workshops</h2>
-      <div className="grid-list">
+        <SectionTitle>Workshops</SectionTitle>
         {workshops.map((w) => (
           <WorkshopCard key={w.title} {...w} />
         ))}
+        <div style={{ height: 72 }} />
       </div>
+      <Navbar items={navItems} />
     </div>
   );
 }
