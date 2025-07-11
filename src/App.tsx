@@ -1,24 +1,25 @@
-import { FaVideo, FaDumbbell, FaBook } from 'react-icons/fa';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import VideoTherapy from './pages/VideoTherapy';
+import Workshops from './pages/Workshops';
+import PersonalityAnalysis from './pages/PersonalityAnalysis';
+import MediaLibrary from './pages/MediaLibrary';
+import MindfulExercises from './pages/MindfulExercises';
+import Header from './Header';
 import './App.css';
-
-function Card({ title, icon }: { title: string; icon: JSX.Element }) {
-  return (
-    <div className="card">
-      {icon}
-      <h2>{title}</h2>
-    </div>
-  );
-}
 
 export default function App() {
   return (
-    <div className="container">
-      <h1>Alayn Dashboard</h1>
-      <div className="cards">
-        <Card title="Video Therapy" icon={<FaVideo />} />
-        <Card title="Mindful Exercises" icon={<FaDumbbell />} />
-        <Card title="Media Library" icon={<FaBook />} />
-      </div>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/therapy" element={<VideoTherapy />} />
+        <Route path="/workshops" element={<Workshops />} />
+        <Route path="/analysis" element={<PersonalityAnalysis />} />
+        <Route path="/library" element={<MediaLibrary />} />
+        <Route path="/exercises" element={<MindfulExercises />} />
+      </Routes>
+    </Router>
   );
 }
