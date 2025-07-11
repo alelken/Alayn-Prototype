@@ -69,13 +69,13 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="container">
+    <div className="container fade-in">
       {onboarding && (
         <div style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
           background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}>
-          <div style={{ background: '#fff', borderRadius: 16, padding: 24, maxWidth: 340, width: '90%', boxShadow: '0 4px 24px #008c7e22', textAlign: 'center' }}>
+          <div style={{ background: '#fff', borderRadius: 16, padding: 24, maxWidth: 340, width: '90%', boxShadow: '0 4px 24px rgba(58,90,64,0.2)', textAlign: 'center' }}>
             <h2>Welcome to Alayn!</h2>
             <p>Explore therapy, exercises, and more. Set your preferences in your profile.</p>
             <button className="btn mt-md" onClick={() => setOnboarding(false)}>Get Started</button>

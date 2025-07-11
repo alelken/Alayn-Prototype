@@ -58,7 +58,7 @@ export default function VideoTherapy() {
   );
 
   return (
-    <div className="container">
+    <div className="container fade-in">
       <h1>Therapist Videos & Workshops</h1>
       <h2 style={{fontSize: '1.1rem', color: 'var(--color-peacock)', margin: '1.2rem 0 0.5rem 0'}}>Therapists</h2>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
@@ -73,9 +73,9 @@ export default function VideoTherapy() {
             fontSize: 16,
             padding: 8,
             borderRadius: 8,
-            border: '1px solid #b9a5ff',
+            border: '1px solid var(--color-lilac)',
             outline: 'none',
-            background: '#f5e9da',
+            background: 'var(--color-sand)',
             color: 'var(--color-charcoal)'
           }}
         />

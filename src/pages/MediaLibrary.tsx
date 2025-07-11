@@ -36,7 +36,7 @@ export default function MediaLibrary() {
   };
 
   return (
-    <div className="container">
+    <div className="container fade-in">
       <h1>Media Library</h1>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
         <span style={{ color: 'var(--color-peacock)', marginRight: 8, fontSize: 18 }}>🔍</span>
@@ -50,9 +50,9 @@ export default function MediaLibrary() {
             fontSize: 16,
             padding: 8,
             borderRadius: 8,
-            border: '1px solid #b9a5ff',
+            border: '1px solid var(--color-lilac)',
             outline: 'none',
-            background: '#f5e9da',
+            background: 'var(--color-sand)',
             color: 'var(--color-charcoal)'
           }}
         />

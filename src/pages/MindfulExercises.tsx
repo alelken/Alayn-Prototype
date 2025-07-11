@@ -15,8 +15,8 @@ function Modal({ open, onClose, children }: { open: boolean; onClose: () => void
       position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
       background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
     }}>
-      <div style={{ background: '#fff', borderRadius: 16, padding: 16, maxWidth: 340, width: '90%', boxShadow: '0 4px 24px #008c7e22', position: 'relative' }}>
-        <button onClick={onClose} style={{ position: 'absolute', top: 8, right: 12, background: 'none', border: 'none', fontSize: 22, color: '#008C7E', cursor: 'pointer' }}>&times;</button>
+      <div style={{ background: '#fff', borderRadius: 16, padding: 16, maxWidth: 340, width: '90%', boxShadow: '0 4px 24px rgba(58,90,64,0.2)', position: 'relative' }}>
+        <button onClick={onClose} style={{ position: 'absolute', top: 8, right: 12, background: 'none', border: 'none', fontSize: 22, color: 'var(--color-peacock)', cursor: 'pointer' }}>&times;</button>
         {children}
       </div>
     </div>
@@ -47,7 +47,7 @@ export default function MindfulExercises() {
   const filteredExercises = exercises.filter(ex => ex.title.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <div className="container">
+    <div className="container fade-in">
       <h1>Mindful Exercises</h1>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
         <span style={{ color: 'var(--color-peacock)', marginRight: 8, fontSize: 18 }}>🔍</span>
@@ -61,9 +61,9 @@ export default function MindfulExercises() {
             fontSize: 16,
             padding: 8,
             borderRadius: 8,
-            border: '1px solid #b9a5ff',
+            border: '1px solid var(--color-lilac)',
             outline: 'none',
-            background: '#f5e9da',
+            background: 'var(--color-sand)',
             color: 'var(--color-charcoal)'
           }}
         />

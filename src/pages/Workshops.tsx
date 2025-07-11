@@ -30,7 +30,7 @@ function WorkshopCard({ title, date, price }: { title: string; date: string; pri
 
 export default function Workshops() {
   return (
-    <div className="container">
+    <div className="container fade-in">
       <h1>Therapist Videos & Workshops</h1>
       <div className="grid-list">
         {workshops.map((w) => (

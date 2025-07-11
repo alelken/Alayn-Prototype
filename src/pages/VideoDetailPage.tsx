@@ -13,11 +13,11 @@ export default function VideoDetailPage() {
   const related = media.filter(m => m.id !== id && m.free);
 
   if (!video) {
-    return <div className="container"><h1>Video Not Found</h1></div>;
+    return <div className="container fade-in"><h1>Video Not Found</h1></div>;
   }
 
   return (
-    <div className="container">
+    <div className="container fade-in">
       <h1 style={{ marginBottom: 8 }}>{video.title}</h1>
       <div style={{ color: '#888', marginBottom: 16 }}>{video.description}</div>
       {video.free && video.url ? (

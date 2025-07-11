@@ -37,7 +37,7 @@ export default function PersonalityAnalysis() {
   };
 
   return (
-    <div className="container">
+    <div className="container fade-in">
       <h1>Personality Analysis</h1>
       <div className="mb-md">
         <div style={{ display: 'flex', gap: 4 }}>
