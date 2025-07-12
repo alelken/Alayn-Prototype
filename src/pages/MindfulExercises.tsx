@@ -14,8 +14,16 @@ const exercises = [
 
 export default function MindfulExercises() {
   const [search, setSearch] = useState('');
+  const [streak, setStreak] = useState<number>(() => Number(localStorage.getItem('streak') || 0));
   const filteredExercises = exercises.filter(ex => ex.title.toLowerCase().includes(search.toLowerCase()));
-  const [streak] = useState<number>(() => Number(localStorage.getItem('streak') || 0));
+
+  const handleStart = (free: boolean) => {
+    if (!free) return;
+    const newStreak = streak + 1;
+    setStreak(newStreak);
+    localStorage.setItem('streak', newStreak.toString());
+    alert('Exercise started! Streak updated.');
+  };
 
   return (
     <div className="dashboard-bg">
@@ -40,7 +48,7 @@ export default function MindfulExercises() {
                 <div style={{ color: colors.gray, fontSize: 14 }}>{ex.free ? 'Free' : 'Premium'}</div>
               </div>
             </div>
-            <button className="btn" disabled={!ex.free}>Start</button>
+            <button className="btn" disabled={!ex.free} onClick={() => handleStart(ex.free)}>Start</button>
           </Card>
         ))}
         <div style={{ height: 72 }} />
