@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaArrowLeft } from 'react-icons/fa';
+import { IoArrowBack } from 'react-icons/io5';
 import { colors } from '../theme';
 let AppCapacitor: any = undefined;
 try {
@@ -23,7 +23,7 @@ export default function BackButton({ style = {}, label = 'Back' }: { style?: Rea
       onClick={handleBack}
       type="button"
     >
-      <FaArrowLeft style={{ color: colors.text, fontSize: 18 }} />
+      <IoArrowBack style={{ color: colors.text, fontSize: 18 }} />
       <span>{label}</span>
     </button>
   );

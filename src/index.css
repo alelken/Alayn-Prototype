@@ -1,12 +1,14 @@
 :root {
-  --color-peacock: #3A5A40; /* primary deep green */
-  --color-teal: #A7C957; /* light green accent */
-  --color-lilac: #A7C957;
-  --color-sand: #F2F5F0; /* off white */
+  --color-peacock: #008080; /* peacock blue */
+  --color-gold: #DAA520;
+  --color-brown: #5D4037;
+  --color-teal: #DAA520; /* accent */
+  --color-lilac: #FFF7E1;
+  --color-sand: #FFFFFF;
   --color-charcoal: #1F1F1F;
-  --color-accent: #A7C957;
-  --color-gradient: linear-gradient(135deg, #3A5A40 0%, #A7C957 100%);
-  --color-gradient-accent: linear-gradient(135deg, #A7C957 0%, #3A5A40 100%);
+  --color-accent: #DAA520;
+  --color-gradient: linear-gradient(135deg, #008080 0%, #DAA520 100%);
+  --color-gradient-accent: linear-gradient(135deg, #DAA520 0%, #008080 100%);
   --color-disabled: #B2DFDB;
   --color-error: #FF6B6B;
   --color-success: #00C896;
@@ -16,7 +18,7 @@
   --shadow: 0 4px 16px rgba(0, 140, 126, 0.08), 0 1.5px 4px rgba(0,0,0,0.04);
   --font-heading: 'DM Sans', sans-serif;
   --font-body: 'DM Sans', sans-serif;
-  --color-chip-bg: #A7C95733;
+  --color-chip-bg: #DAA52033;
   --font-size-lg: 2rem;
   --font-size-md: 1.1rem;
   --font-size-sm: 0.98rem;
@@ -28,7 +30,7 @@
 body {
   margin: 0;
   font-family: var(--font-body);
-  background: var(--color-peacock);
+  background: var(--color-sand);
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMjAnIGhlaWdodD0nMjAnPjxwYXRoIGQ9J00wIDEwYzEwLTUgMjAtNSAzMCAwczIwIDUgMzAgMCAyMC01IDMwIDAgMjAgNSAzMCAwJyBzdHJva2U9JyUyM2ZmZmZmZjMzJyBzdHJva2Utd2lkdGg9JzEnIGZpbGw9J25vbmUnLz48L3N2Zz4=");
   background-repeat: repeat;
   color: var(--color-charcoal);
