@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaDumbbell } from 'react-icons/fa';
+import { GiLotus } from 'react-icons/gi';
 import Card from '../components/Card';
 import SectionTitle from '../components/SectionTitle';
 import BottomNav from '../components/BottomNav';
@@ -15,11 +15,13 @@ const exercises = [
 export default function MindfulExercises() {
   const [search, setSearch] = useState('');
   const filteredExercises = exercises.filter(ex => ex.title.toLowerCase().includes(search.toLowerCase()));
+  const [streak] = useState<number>(() => Number(localStorage.getItem('streak') || 0));
 
   return (
     <div className="dashboard-bg">
       <div className="container">
         <SectionTitle>Mindful Exercises</SectionTitle>
+        <div style={{ color: colors.gray, marginBottom: 8 }}>Day streak: {streak}</div>
         <Card style={{ marginBottom: 24 }}>
           <SearchInput
             type="text"
@@ -32,7 +34,7 @@ export default function MindfulExercises() {
         {filteredExercises.map((ex) => (
           <Card key={ex.title} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div className="avatar-placeholder" style={{ fontSize: 28 }}><FaDumbbell /></div>
+              <div className="avatar-placeholder" style={{ fontSize: 28 }}><GiLotus /></div>
               <div>
                 <div style={{ fontWeight: 600 }}>{ex.title}</div>
                 <div style={{ color: colors.gray, fontSize: 14 }}>{ex.free ? 'Free' : 'Premium'}</div>

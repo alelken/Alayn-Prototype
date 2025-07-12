@@ -1,14 +1,17 @@
 // Theme variables for the app
 export const colors = {
-  background: '#F7F5F2',
+  background: '#FFFFFF',
   card: '#FFFFFF',
+  peacock: '#008080',
+  gold: '#DAA520',
+  brown: '#5D4037',
   blue: '#E6E6FA',
   yellow: '#FFF9DB',
   green: '#D1F2EB',
   lavender: '#F3E8FF',
   gray: '#B0B0B0',
   text: '#222',
-  accent: '#D1F2EB', // unified accent color (same as Dashboard's green)
+  accent: '#DAA520',
   shadow: 'rgba(0,0,0,0.07)',
 };
 
