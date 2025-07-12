@@ -33,6 +33,8 @@ const slides = [
 
 export default function Dashboard() {
   const [slide, setSlide] = useState(0);
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
   useEffect(() => {
     const t = setInterval(() => setSlide(s => (s + 1) % slides.length), 4000);
     return () => clearInterval(t);
@@ -44,7 +46,7 @@ export default function Dashboard() {
         <div className="dash-header" style={{ marginBottom: 24 }}>
           <Link to="/profile" className="avatar-wrap" style={{ cursor: 'pointer' }}>{avatarUrl ? <img src={avatarUrl} alt="avatar" /> : <FaUserCircle size={36} />}</Link>
           <div className="greeting">
-            <div className="greet-text">Welcome, <b>{clientName}</b>!</div>
+            <div className="greet-text">{greeting}, <b>{clientName}</b>!</div>
           </div>
           <button className="notif-bell" aria-label="Notifications" type="button">
             <FaBell size={22} />
