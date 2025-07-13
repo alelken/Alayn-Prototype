@@ -43,7 +43,7 @@ export default function Profile() {
     avatar: null,
   };
 
-  const { data: streak } = useQuery({
+  const { data: streak } = useQuery<any>({
     queryKey: ["/api/user-progress/1/streak"],
   });
 

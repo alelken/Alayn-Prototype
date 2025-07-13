@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useState, useEffect } from "react";
 import SplashScreen from "@/components/ui/splash-screen";
 import Home from "@/pages/home";
-import PersonalityAnalysis from "@/pages/personality-analysis";
+import SelfAnalysis from "@/pages/self-analysis";
 import Therapy from "@/pages/therapy";
 import Booking from "@/pages/booking";
 import VideoCall from "@/pages/video-call";
@@ -54,7 +54,7 @@ function Router() {
       <div className="min-h-screen bg-soft-gray">
         <Switch>
           <Route path="/" component={Home} />
-          <Route path="/personality-analysis" component={PersonalityAnalysis} />
+          <Route path="/personality-analysis" component={SelfAnalysis} />
           <Route path="/therapy" component={Therapy} />
           <Route path="/booking/:therapistId" component={Booking} />
           <Route path="/video-call" component={VideoCall} />

@@ -25,11 +25,11 @@ export default function Workshops() {
   // Use the centralized back button hook
   useCapacitorBack();
 
-  const { data: workshopsData, isLoading: workshopsLoading } = useQuery({
+  const { data: workshopsData = [] } = useQuery<any[]>({
     queryKey: ["/api/workshops"],
   });
 
-  const { data: userWorkshops } = useQuery({
+  const { data: userWorkshops = [] } = useQuery<any[]>({
     queryKey: ["/api/workshop-bookings/user/1"],
   });
 

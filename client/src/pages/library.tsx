@@ -47,9 +47,10 @@ export default function Library() {
         }));
         setMediaContent(fetchedContent);
       } catch (error) {
+        const err = error as Error;
         toast({
           title: "Error fetching media",
-          description: error.message,
+          description: err.message,
           variant: "destructive",
         });
       } finally {
