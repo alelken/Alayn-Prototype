@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "type": "audio",
+    "title": "Morning Mindset Reset",
+    "description": "Kickstart your day with positive affirmations and mindful breathing.",
+    "language": "en",
+    "isPremium": false,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+    "duration": 12
+  },
+  {
+    "id": 2,
+    "type": "audio",
+    "title": "The Calm Cast",
+    "description": "Guided relaxation and stress relief for busy minds.",
+    "language": "en",
+    "isPremium": true,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+    "duration": 18
+  },
+  {
+    "id": 3,
+    "type": "video",
+    "title": "Journey to Stillness",
+    "description": "A visual meditation story for inner peace.",
+    "language": "en",
+    "isPremium": false,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
+    "duration": 9
+  },
+  {
+    "id": 4,
+    "type": "video",
+    "title": "The Gratitude Path",
+    "description": "A short film about the power of gratitude in daily life.",
+    "language": "en",
+    "isPremium": false,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&h=200",
+    "duration": 7
+  },
+  {
+    "id": 5,
+    "type": "article",
+    "title": "5 Ways to Practice Mindfulness at Work",
+    "description": "Simple techniques to stay present and focused during your workday.",
+    "language": "en",
+    "isPremium": false,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 6,
+    "type": "article",
+    "title": "The Science of Sleep",
+    "description": "How better sleep can transform your mental health.",
+    "language": "en",
+    "isPremium": false,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80"
+  }
+] 

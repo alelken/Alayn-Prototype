@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "type": "audio",
+    "title": "Morning Mindset Reset",
+    "description": "Kickstart your day with positive affirmations and mindful breathing.",
+    "language": "en",
+    "isPremium": false,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+    "duration": 12,
+    "contentUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+  },
+  {
+    "id": 2,
+    "type": "audio",
+    "title": "The Calm Cast",
+    "description": "Guided relaxation and stress relief for busy minds.",
+    "language": "en",
+    "isPremium": true,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+    "duration": 18,
+    "contentUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+  },
+  {
+    "id": 3,
+    "type": "audio",
+    "title": "Focus Flow",
+    "description": "Music and tips to help you focus and be productive.",
+    "language": "en",
+    "isPremium": false,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80",
+    "duration": 15,
+    "contentUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+  },
+  {
+    "id": 4,
+    "type": "audio",
+    "title": "Sleep Sanctuary",
+    "description": "Soothing sounds and stories for restful sleep.",
+    "language": "en",
+    "isPremium": false,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80",
+    "duration": 20,
+    "contentUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+  },
+  {
+    "id": 5,
+    "type": "audio",
+    "title": "Gratitude Groove",
+    "description": "Daily gratitude reflections and meditations.",
+    "language": "en",
+    "isPremium": false,
+    "thumbnailUrl": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+    "duration": 10,
+    "contentUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+  }
+] 

@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Priya Sharma",
+    "imageUrl": "/public/therapist1.jpg",
+    "rating": 9.2,
+    "experience": 8,
+    "feePerSession": 15000,
+    "specialties": ["Anxiety", "Relationships"],
+    "language": "English",
+    "region": "Mumbai"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Rahul Mehta",
+    "imageUrl": "/public/therapist2.jpg",
+    "rating": 8.8,
+    "experience": 5,
+    "feePerSession": 12000,
+    "specialties": ["Family", "Anxiety"],
+    "language": "Hindi",
+    "region": "Delhi"
+  },
+  {
+    "id": 3,
+    "name": "Dr. Anjali Verma",
+    "imageUrl": "/public/therapist3.jpg",
+    "rating": 9.0,
+    "experience": 10,
+    "feePerSession": 18000,
+    "specialties": ["Relationships", "Family"],
+    "language": "Gujarati",
+    "region": "Ahmedabad"
+  }
+] 

@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "category": "Addiction",
+    "title": "Day 1: Awareness Journal",
+    "description": "Write down every time you feel the urge. Reflect on your triggers.",
+    "duration": 10,
+    "difficulty": "Beginner",
+    "rating": 8.5,
+    "isPremium": false,
+    "imageUrl": "/public/addiction1.jpg"
+  },
+  {
+    "id": 2,
+    "category": "Addiction",
+    "title": "Day 2: Distraction Technique",
+    "description": "Practice a healthy distraction (walk, call a friend) when urges arise.",
+    "duration": 10,
+    "difficulty": "Beginner",
+    "rating": 8.7,
+    "isPremium": false,
+    "imageUrl": "/public/addiction2.jpg"
+  },
+  {
+    "id": 3,
+    "category": "Introvertedness",
+    "title": "Day 1: Social Warm-up",
+    "description": "Greet 3 people today, even if just a smile or hello.",
+    "duration": 5,
+    "difficulty": "Beginner",
+    "rating": 8.2,
+    "isPremium": false,
+    "imageUrl": "/public/introvert1.jpg"
+  },
+  {
+    "id": 4,
+    "category": "Career Guidance",
+    "title": "Day 1: Self-Assessment",
+    "description": "List your top 5 strengths and 3 areas to improve.",
+    "duration": 10,
+    "difficulty": "Beginner",
+    "rating": 8.0,
+    "isPremium": false,
+    "imageUrl": "/public/career1.jpg"
+  },
+  {
+    "id": 5,
+    "category": "Relationship Guidance",
+    "title": "Day 1: Active Listening",
+    "description": "Have a conversation and focus only on listening, not responding.",
+    "duration": 10,
+    "difficulty": "Beginner",
+    "rating": 8.3,
+    "isPremium": false,
+    "imageUrl": "/public/relationship1.jpg"
+  },
+  {
+    "id": 6,
+    "category": "Parenting",
+    "title": "Day 1: Positive Reinforcement",
+    "description": "Praise your child for a positive behavior today.",
+    "duration": 10,
+    "difficulty": "Beginner",
+    "rating": 8.6,
+    "isPremium": false,
+    "imageUrl": "/public/parenting1.jpg"
+  },
+  {
+    "id": 7,
+    "category": "Spiritual Guidance",
+    "title": "Day 1: Mindful Breathing",
+    "description": "Spend 5 minutes focusing on your breath and being present.",
+    "duration": 5,
+    "difficulty": "Beginner",
+    "rating": 8.4,
+    "isPremium": false,
+    "imageUrl": "/public/spiritual1.jpg"
+  },
+  {
+    "id": 8,
+    "category": "Stress Management",
+    "title": "Day 1: Progressive Muscle Relaxation",
+    "description": "Tense and relax each muscle group for 10 seconds.",
+    "duration": 10,
+    "difficulty": "Beginner",
+    "rating": 8.8,
+    "isPremium": false,
+    "imageUrl": "/public/stress1.jpg"
+  },
+  {
+    "id": 9,
+    "category": "Pink Feature",
+    "title": "Day 1: Self-Compassion Journal",
+    "description": "Write a kind note to yourself about something you struggled with.",
+    "duration": 10,
+    "difficulty": "Beginner",
+    "rating": 8.9,
+    "isPremium": false,
+    "imageUrl": "/public/pink1.jpg"
+  }
+] 

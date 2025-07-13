@@ -1,0 +1,104 @@
+### Alayn App Outline: Design and Development Guide
+
+As your business assistant, I'll provide a fully detailed outline for the Alayn app based on the provided pitch deck (Alayn_Align_your_life.pdf), revenue model (Alayn Revenue Model.docx), and feature specifications (Alayn Feature Specification.docx). This outline focuses on ideation, design, and development aspects to bring the startup product to life. Since previous chats aren't explicitly detailed here, I'll infer and build upon the core vision of Alayn as a mental health platform addressing India's treatment gap through accessible, culturally relevant features like video therapy, AI personality analysis, mindful exercises, media library, and workshops—emphasizing multilingual support (English, Tamil, Hindi, Kannada at launch), personalization, and a subscription-based model (e.g., ₹399/month for premium access).
+
+The app's overall design philosophy is **simplistic, animated, and clean**:
+- **Simplistic**: Minimalist layouts with ample white space, intuitive navigation, and no clutter. Use sans-serif fonts (e.g., Roboto or similar for readability across languages).
+- **Animated**: Subtle, purposeful animations like fade-ins for page loads, smooth transitions for button interactions, and gentle pulses for calls-to-action (CTAs) to guide users without overwhelming them—enhancing the calming, mental health-focused experience.
+- **Clean**: High contrast for accessibility, rounded corners on elements, and consistent spacing. Avoid gradients or shadows unless subtle.
+- **Color Scheme**: Primary color is Peacock Blue (#004D40—a deep, vibrant teal-blue evoking tranquility and cultural resonance with Indian aesthetics like peacock feathers). Use it for accents (buttons, icons, highlights). Secondary: Soft Gray (#F5F5F5) for backgrounds, White (#FFFFFF) for cards/text, and accents like Light Blue (#80CBC4) for subtle highlights. Error states in soft red (#FF5252), success in green (#4CAF50).
+
+The app will be developed for iOS and Android using cross-platform tools like Flutter or React Native for efficiency, ensuring multilingual support via localization libraries. Backend: Firebase/Google Cloud for AI integration (Gemini models), video calls (e.g., WebRTC for encrypted sessions), and payments (Razorpay for India-specific gateways). Total development timeline estimate: 3-4 months for MVP, with agile sprints focusing on core features.
+
+Below is a page-by-page UI breakdown, structured as:
+- **Purpose**: Feature alignment and user flow.
+- **Layout**: Key elements and structure.
+- **UI Elements & Animations**: Detailed descriptions.
+- **Interactions & Navigation**: How users engage.
+- **Development Notes**: Tech tips for implementation.
+
+#### 1. Splash/Loading Screen
+   - **Purpose**: Initial app entry point to set a calming tone, load resources, and check for updates or language preferences.
+   - **Layout**: Full-screen centered content. Background: Subtle Peacock Blue gradient fading to white. Centered Alayn logo (stylized text: "Alayn" in elegant sans-serif, with a small peacock feather icon). Below: Tagline "Align your life" in multilingual script (auto-detected). Progress indicator at bottom.
+   - **UI Elements & Animations**: Logo fades in with a gentle scale-up animation (0.5s). Tagline appears with a typewriter effect for a welcoming feel. No buttons—auto-transitions to onboarding after 3s or on load complete.
+   - **Interactions & Navigation**: Tap anywhere to skip. If first launch, redirects to Onboarding; else to Home.
+   - **Development Notes**: Use SplashScreen widget in Flutter. Integrate language detection via device locale.
+
+#### 2. Onboarding Screens (3-5 Slides)
+   - **Purpose**: Educate new users on app benefits (e.g., mental health gap solutions, features like AI analysis), collect basic info (language, gender for personalization), and guide to registration.
+   - **Layout**: Carousel slider with swipe navigation. Each slide: Top half illustration (e.g., animated yoga pose or therapy session icon in Peacock Blue), bottom half text and CTA button. Dots indicator at bottom for progress.
+   - **UI Elements & Animations**: Illustrations with subtle breathing animations (e.g., elements gently expand/contract). Text: Bold heading (e.g., "Bridge the Mental Health Gap") in Peacock Blue, body in gray. CTA button ("Next") with ripple animation on tap. Last slide: "Get Started" button.
+   - **Interactions & Navigation**: Swipe left/right. On last slide, tap leads to Login/Registration. Skip button in top-right.
+   - **Development Notes**: Use PageView in Flutter. Store preferences in local storage (SharedPreferences) for personalization.
+
+#### 3. Login/Registration Page
+   - **Purpose**: Secure user entry, supporting email/phone, Google/Apple sign-in. Collect minimal data (name, age, gender) for AI personalization.
+   - **Layout**: Centered form on white background with Peacock Blue header ("Welcome to Alayn"). Fields: Email/Phone, Password (for login); additional Name/Gender dropdown for registration. Language selector dropdown.
+   - **UI Elements & Animations**: Inputs with rounded borders, Peacock Blue focus highlight. Eye icon for password toggle with fade animation. Buttons: "Login" or "Sign Up" in Peacock Blue, with loading spinner animation. Social icons pulse subtly.
+   - **Interactions & Navigation**: Form validation with shake animation on errors. Successful login redirects to Home. "Forgot Password?" link opens modal for reset.
+   - **Development Notes**: Firebase Auth for backend. Ensure OTP for phone (via Firebase). Multilingual labels via i18n.
+
+#### 4. Home/Dashboard Page
+   - **Purpose**: Central hub for quick access to features, personalized recommendations (based on AI analysis), and subscription status.
+   - **Layout**: Bottom navigation bar (Home, Therapy, Exercises, Library, Profile). Top: Greeting ("Hello, [Name]") with daily tip card. Middle: Scrollable sections—Personalized Recommendations (cards for exercises/media), Quick Actions (buttons for Therapy/Workshop booking), Progress Tracker (e.g., streak for exercises).
+   - **UI Elements & Animations**: Cards with rounded corners, Peacock Blue accents on icons (e.g., brain for AI, video for therapy). Fade-in animations for cards on load. Subscription banner (if free user) with slide-up animation.
+   - **Interactions & Navigation**: Tap cards to navigate (e.g., to Personality Analysis). Bottom nav icons highlight in Peacock Blue on select.
+   - **Development Notes**: Use BottomNavigationBar. Fetch personalized data via API call to backend AI engine.
+
+#### 5. Personality Analysis Page
+   - **Purpose**: AI-powered assessment using Gemini models + psychological frameworks. Provides insights and recommendations for exercises/media.
+   - **Layout**: Stepper progress bar at top (e.g., 1/5 sections). Questionnaire: Multiple-choice questions (personalized by gender) with radio buttons. Bottom: "Next" button.
+   - **UI Elements & Animations**: Questions fade in one by one. Peacock Blue progress bar fills smoothly. Results screen: Visual profile chart (e.g., radar graph in Peacock Blue), insights text, and recommendation cards with bounce animation.
+   - **Interactions & Navigation**: Auto-save progress. On complete, show results modal with "Explore Recommendations" button linking to Exercises/Library.
+   - **Development Notes**: Integrate Google Gemini API for analysis. Store results in user profile for ongoing personalization.
+
+#### 6. Therapy Search & Booking Page
+   - **Purpose**: Search/filter therapists for video sessions (e.g., by domain like parenting, spiritual guidance). Aligns with non-severe cases only.
+   - **Layout**: Top search bar with filters (domain, language, rating). Grid/list of therapist cards: Photo, name, bio snippet, fee (with platform commission noted transparently).
+   - **UI Elements & Animations**: Cards with Peacock Blue "Book Now" button, star ratings in gold. Filter dropdowns slide down with animation. Encrypted badge icon pulses for trust.
+   - **Interactions & Navigation**: Tap card for detail modal (bio, videos). Book button opens calendar picker, then payment (₹1500 baseline + 10-20% fee). Redirects to Video Call on confirmation.
+   - **Development Notes**: Search via Firestore database. Integrate calendar (e.g., TableCalendar). Payments via Razorpay.
+
+#### 7. Video Therapy Call Page
+   - **Purpose**: Encrypted 1-on-1 video sessions. Post-call feedback for ratings.
+   - **Layout**: Full-screen video (user small PIP, therapist main). Bottom controls: Mute, Video off, End call. Timer at top.
+   - **UI Elements & Animations**: Peacock Blue borders on controls. Fade-in for connection. End call button with confirmation modal slide-up.
+   - **Interactions & Navigation**: Gesture controls (swipe to minimize). Post-call: Rating stars with twinkle animation, back to Home.
+   - **Development Notes**: Use WebRTC for real-time video. Ensure end-to-end encryption. Log sessions for payments (therapist 60%, Alayn 40% markup).
+
+#### 8. Workshops Page
+   - **Purpose**: Browse/buy tickets for live workshops (e.g., 1-2h sessions, 50 participants max). 30% commission on tickets.
+   - **Layout**: Upcoming workshops list: Cards with title, therapist, time, price (₹100-150). Filters by topic/language.
+   - **UI Elements & Animations**: Cards with countdown timer (Peacock Blue ticking animation). "Buy Ticket" button ripples on tap.
+   - **Interactions & Navigation**: Tap for details (description, seats left). Purchase redirects to payment, then adds to calendar. Join button opens in-app Meet-style interface.
+   - **Development Notes**: Schedule via backend cron jobs. Use Google Meet API integration for hosting (480p optimized for costs).
+
+#### 9. Media Library Page
+   - **Purpose**: Educational content from historical figures, in 4 languages. Free: 2 pieces; Premium: Full access.
+   - **Layout**: Grid of content cards: Thumbnail, title, language tag. Search bar at top. Premium lock icon on restricted items.
+   - **UI Elements & Animations**: Cards fade in on scroll. Play button in Peacock Blue with hover pulse. Video player modal with subtitles.
+   - **Interactions & Navigation**: Tap to play (audio/video/text). Premium prompt modal slides up if locked.
+   - **Development Notes**: Host media on Firebase Storage. Track views for personalization.
+
+#### 10. Mindful Exercises Page
+   - **Purpose**: Library of exercises (yoga, breathwork) from partners like Vedanthri Foundation. Free: 1 intro; Premium: Full, personalized.
+   - **Layout**: Categorized tabs (Breathwork, Yoga, etc.). Cards: Video thumbnail, duration, intensity slider.
+   - **UI Elements & Animations**: Personalized section at top with slide-in cards. Play button animates to pause on tap. Progress circle for completion.
+   - **Interactions & Navigation**: Adjust duration/intensity via sliders (smooth drag). Track streaks, link to Home progress.
+   - **Development Notes**: AI recommendations via backend (based on personality results). Video streaming at 480p for cost efficiency.
+
+#### 11. Profile/Settings Page
+   - **Purpose**: Manage account, subscription (tiers: Monthly ₹499, Half-Yearly ₹2700, Yearly ₹4800), language, feedback.
+   - **Layout**: Top: User avatar, name, subscription badge. Sections: Edit Profile, Subscription Management, Language Selector, Logout.
+   - **UI Elements & Animations**: Toggle switches with flip animation. Subscription button in Peacock Blue, with upgrade modal fade-in.
+   - **Interactions & Navigation**: Edit fields save with success toast. Subscription links to payment gateway.
+   - **Development Notes**: Use Stripe/Razorpay for subs. Secure data with Firebase.
+
+#### Additional Considerations
+- **Global Elements**: Consistent app bar with back button (Peacock Blue). Notifications bell for reminders (e.g., workshop starts). Dark mode toggle in settings for eye comfort.
+- **Accessibility**: High contrast ratios, voice-over support, scalable text. Multilingual RTL for Hindi if needed.
+- **Monetization Integration**: Free tier limits (e.g., no full library). Upsell modals with animations.
+- **Testing & Launch**: Focus on Tier 2/3 city users (e.g., beta in Tamil Nadu). Analytics via Firebase to track engagement (aim for 0.01% market share, ₹5.5 Cr/year revenue).
+- **Next Steps**: Prototype in Figma (I'll guide on wireframes if needed). Research competitors (Wysa, Amaha) for UI benchmarks via web tools if required.
+
+This outline positions Alayn for scalable growth while staying true to its mission. Let me know if you'd like wireframes, cost estimates, or refinements!

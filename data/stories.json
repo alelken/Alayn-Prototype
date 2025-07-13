@@ -1,0 +1,7 @@
+[
+  { "id": 1, "type": "video", "title": "Journey to Stillness", "description": "A visual meditation story for inner peace.", "duration": 9, "thumbnailUrl": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80", "contentUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+  { "id": 2, "type": "video", "title": "The Gratitude Path", "description": "A short film about the power of gratitude in daily life.", "duration": 7, "thumbnailUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&h=200", "contentUrl": "https://www.w3schools.com/html/movie.mp4" },
+  { "id": 3, "type": "video", "title": "Finding Balance", "description": "A story about balancing work and life.", "duration": 8, "thumbnailUrl": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80", "contentUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+  { "id": 4, "type": "video", "title": "Mindful Adventures", "description": "Explore mindfulness through animated stories.", "duration": 10, "thumbnailUrl": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80", "contentUrl": "https://www.w3schools.com/html/movie.mp4" },
+  { "id": 5, "type": "video", "title": "The Calm Lake", "description": "A peaceful story set by a tranquil lake.", "duration": 11, "thumbnailUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80", "contentUrl": "https://www.w3schools.com/html/mov_bbb.mp4" }
+] 

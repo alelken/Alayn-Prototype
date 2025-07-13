@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "question": "How often do you take time to reflect on your thoughts and feelings?",
+    "options": ["Rarely", "Sometimes", "Often", "Always"]
+  },
+  {
+    "id": 2,
+    "question": "How do you usually respond to stressful situations?",
+    "options": ["Get overwhelmed", "Try to cope", "Stay calm", "Help others cope"]
+  },
+  {
+    "id": 3,
+    "question": "How comfortable are you expressing your emotions?",
+    "options": ["Not at all", "A little", "Comfortable", "Very comfortable"]
+  },
+  {
+    "id": 4,
+    "question": "How often do you practice gratitude or mindfulness?",
+    "options": ["Never", "Occasionally", "Regularly", "Daily"]
+  },
+  {
+    "id": 5,
+    "question": "How well do you manage conflicts in relationships?",
+    "options": ["Poorly", "Okay", "Well", "Very well"]
+  }
+] 
