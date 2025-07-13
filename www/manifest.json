@@ -1,0 +1,106 @@
+{
+  "name": "Alayn - Mental Health Platform",
+  "short_name": "Alayn",
+  "description": "Comprehensive mental health platform with AI analysis, therapy booking, and mindful exercises",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#004D40",
+  "background_color": "#F5F5F5",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "../icons/icon-48.webp",
+      "type": "image/png",
+      "sizes": "48x48",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../icons/icon-72.webp",
+      "type": "image/png",
+      "sizes": "72x72",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../icons/icon-96.webp",
+      "type": "image/png",
+      "sizes": "96x96",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../icons/icon-128.webp",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../icons/icon-192.webp",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../icons/icon-256.webp",
+      "type": "image/png",
+      "sizes": "256x256",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../icons/icon-512.webp",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "health",
+    "medical",
+    "wellness",
+    "lifestyle"
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "screenshots": [
+    {
+      "src": "/screenshot-narrow.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1024x768",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Personality Analysis",
+      "url": "/personality-analysis",
+      "description": "Take the AI-powered personality assessment"
+    },
+    {
+      "name": "Book Therapy",
+      "url": "/therapy",
+      "description": "Find and book therapy sessions"
+    },
+    {
+      "name": "Mindful Exercises",
+      "url": "/exercises",
+      "description": "Practice mindfulness and meditation"
+    },
+    {
+      "name": "Workshops",
+      "url": "/workshops",
+      "description": "Join group therapy sessions"
+    }
+  ],
+  "prefer_related_applications": false,
+  "protocol_handlers": [
+    {
+      "protocol": "web+alayn",
+      "url": "/?action=%s"
+    }
+  ]
+}
